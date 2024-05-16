@@ -1,0 +1,20 @@
+With the accidents involving Boeing's 737 Max, there have been speculations and concerns about airline safety. Then there was a recent crash of a helicopter involving Kobe Bryant. Academic studies have found that high-profile crashes can shift passenger demand away from the airlines involved in the disasters.
+
+Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past? That’s the question we will try to address in this exercise. The dataset for this has been sourced from Aviation Safety Network and available at this link: https://github.com/fivethirtyeight/data/tree/master/airline-safety.
+
+Links to an external site.
+
+The dataset has following list of attributes:
+ 
+Attribute Name 	Attribute Description
+airline 	Airline (asterisk indicates that regional subsidiaries are included)
+avail_seat_km_per_week 	Available seat kilometers flown every week
+incidents_85_99 	Total number of incidents, 1985–1999
+fatal_accidents_85_99 	Total number of fatal accidents, 1985–1999
+fatalities_85_99 	Total number of fatalities, 1985–1999
+incidents_00_14 	Total number of incidents, 2000–2014
+fatal_accidents_00_14 	Total number of fatal accidents, 2000–2014
+fatalities_00_14 	Total number of fatalities, 2000–2014
+
+                   
+Use this dataset and two different clustering approaches (agglomerative and k-means) to group the airlines with similar safety records. Do these two approaches lead to same/similar results? Provide your brief comments.
