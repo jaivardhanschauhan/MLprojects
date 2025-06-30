@@ -41,13 +41,3 @@ weird_interaction      # sin(age) * log(ads_seen). Intentionally odd to boost no
 high_value_user        # 1 if we think the session belongs to a premium audience segment.
                        # Built with an XOR rule + random flips → tough for linear models.
 
-# Noise we injected
-#   • Gaussian jitter on key numerics (SD ≈ 6) so nothing is perfectly clean.
-#   • 10 % label flips so AUC tops out below 1.0.
-
-# Expected modeling takeaway
-#   • Logistic Regression hovers near random (~0.55 AUC).
-#   • XGBoost spots the XOR + interactions (~0.85 AUC with tuning).
-
-# Use case
-#   Demo project to show how tree models can uncover patterns missed by linear baselines.
