@@ -1,4 +1,4 @@
-# dummy ad-events data (250K rows)
+# ad-events data (250K rows)
 
 # Each row = one user session we showed an ad in.
 
@@ -14,9 +14,9 @@ device_type            # mobile / tablet / desktop. We see the usual mobile majo
 
 os                     # iOS, Android, Windows. Mostly matches device_type but not always.
 
-age                    # 18-59. Rough demo bucket for the user (synthetic).
+age                    # 18-59. 
 
-gender                 # 0 = female, 1 = male (no other classes in this toy set).
+gender                 # 0 = female, 1 = male.
 
 time_engaged           # Seconds spent interacting with the page *before* the ad appeared.
                        # Drawn from an exponential → lots of short visits, a few long ones.
@@ -31,7 +31,7 @@ past_click_rate        # Historic CTR for this user (0-1). Beta-distributed, so 
 
 days_since_last_click  # Self-explanatory, 0-30.
 
-avg_watch_time_per_ad  # Mean seconds the user watched video ads in the past. Added noise.
+avg_watch_time_per_ad  # Mean seconds the user watched video ads in the past.
 
 # Engineered features
 engage_click_combo     # time_engaged * past_click_rate. Captures “long visit + clicky user”.
@@ -39,5 +39,5 @@ weird_interaction      # sin(age) * log(ads_seen). Intentionally odd to boost no
 
 # Target
 high_value_user        # 1 if we think the session belongs to a premium audience segment.
-                       # Built with an XOR rule + random flips → tough for linear models.
+                       # Built with an XOR rule + random flips.
 
