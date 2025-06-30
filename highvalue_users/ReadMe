@@ -1,0 +1,53 @@
+# dummy ad-events data (250K rows)
+
+# Each row = one user session we showed an ad in.
+
+hour_of_day            # 0-23, local time when the ad served.
+day_of_week            # 0-6, Monday = 0. Helps catch weekday vs weekend patterns.
+
+inventory_source       # 'open_exchange' / 'private_marketplace' / 'direct'.
+                       # Direct buys often come from premium publishers.
+
+app_category           # Broad bucket of the app or site: games, news, social, entertainment.
+
+device_type            # mobile / tablet / desktop. We see the usual mobile majority.
+
+os                     # iOS, Android, Windows. Mostly matches device_type but not always.
+
+age                    # 18-59. Rough demo bucket for the user (synthetic).
+
+gender                 # 0 = female, 1 = male (no other classes in this toy set).
+
+time_engaged           # Seconds spent interacting with the page *before* the ad appeared.
+                       # Drawn from an exponential → lots of short visits, a few long ones.
+
+ad_format              # video, banner, native. Video is the money maker.
+
+session_duration       # Total session length in seconds (normal bell-curve around 5 min).
+
+ads_seen_in_session    # 1-10. How many ad impressions we already showed in that session.
+
+past_click_rate        # Historic CTR for this user (0-1). Beta-distributed, so most are low.
+
+days_since_last_click  # Self-explanatory, 0-30.
+
+avg_watch_time_per_ad  # Mean seconds the user watched video ads in the past. Added noise.
+
+# Engineered features
+engage_click_combo     # time_engaged * past_click_rate. Captures “long visit + clicky user”.
+weird_interaction      # sin(age) * log(ads_seen). Intentionally odd to boost non-linear signal.
+
+# Target
+high_value_user        # 1 if we think the session belongs to a premium audience segment.
+                       # Built with an XOR rule + random flips → tough for linear models.
+
+# Noise we injected
+#   • Gaussian jitter on key numerics (SD ≈ 6) so nothing is perfectly clean.
+#   • 10 % label flips so AUC tops out below 1.0.
+
+# Expected modeling takeaway
+#   • Logistic Regression hovers near random (~0.55 AUC).
+#   • XGBoost spots the XOR + interactions (~0.85 AUC with tuning).
+
+# Use case
+#   Demo project to show how tree models can uncover patterns missed by linear baselines.
