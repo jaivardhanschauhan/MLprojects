@@ -33,10 +33,6 @@ days_since_last_click  # Self-explanatory, 0-30.
 
 avg_watch_time_per_ad  # Mean seconds the user watched video ads in the past.
 
-# Engineered features
-engage_click_combo     # time_engaged * past_click_rate. Captures “long visit + clicky user”.
-weird_interaction      # sin(age) * log(ads_seen). Intentionally odd to boost non-linear signal.
-
 # Target
 high_value_user        # 1 if we think the session belongs to a premium audience segment.
                        # Built with an XOR rule + random flips.
